@@ -25,7 +25,7 @@ public class LoginController {
             String email = loginView.getUtilizador();
             String senha = loginView.getPalavraChave();
 
-            System.out.println("Tentando login com email: " + email + " e senha: " + senha);
+            //System.out.println("Tentando login com email: " + email + " e senha: " + senha);
 
             // Chamar o método buscarPorCredenciais do PerfilDAO
             Utilizador utilizador = perfilDAO.buscarPorCredenciais(email, senha);
@@ -40,7 +40,7 @@ public class LoginController {
 
                 loginView.dispose();
                 // Abre a próxima janela principal do frontoffice, que é a MenuView
-                new MenuView().mostrar();
+                new MenuController();
             } else {
                 JOptionPane.showMessageDialog(loginView,
                         "Credenciais inválidas. Verifique seu email e senha.",

@@ -9,8 +9,8 @@ import model.Perfil;
  */
 public class UserSession {
     private static UserSession instance;
-    private Utilizador utilizador; // Mantido o nome da sua variável
-    private Perfil perfil;       // Mantido o nome da sua variável
+    private Utilizador utilizador;
+    private Perfil perfil;
 
     /**
      * Construtor privado para garantir o padrão Singleton.
@@ -38,22 +38,34 @@ public class UserSession {
     public void setLoggedInUser(Utilizador utilizador, Perfil perfil) {
         this.utilizador = utilizador;
         this.perfil = perfil;
+        System.out.println("UserSession: Utilizador logado: " + (utilizador != null ? utilizador.getUtilizador() : "N/A") + ", Perfil: " + (perfil != null ? perfil.getDescricao() : "N/A"));
+    }
+
+    /**
+     * Termina a sessão do utilizador, limpando os dados do utilizador e do perfil.
+     * Este método é chamado pelo MenuController.
+     */
+    public void cleanUserSession() { // MÉTODO ADICIONADO/CORRIGIDO
+        this.utilizador = null;
+        this.perfil = null;
+        System.out.println("UserSession: Sessão do utilizador limpa (cleanUserSession).");
     }
 
     /**
      * Termina a sessão do utilizador, limpando os dados do utilizador e do perfil.
      * Renomeado de cleanUserSession() para logout() para maior clareza.
+     * Este método agora chama cleanUserSession() para consistência.
      */
     public void logout() {
-        this.utilizador = null;
-        this.perfil = null;
+        this.cleanUserSession(); // Chama o método cleanUserSession para limpar a sessão
+        System.out.println("UserSession: Sessão do utilizador limpa (logout).");
     }
 
     /**
      * Obtém o utilizador atualmente logado.
      * @return O objeto Utilizador logado, ou null se ninguém estiver logado.
      */
-    public Utilizador getUtilizador() { // Mantido o nome do seu método
+    public Utilizador getUtilizador() {
         return utilizador;
     }
 
@@ -61,7 +73,7 @@ public class UserSession {
      * Obtém o perfil do utilizador atualmente logado.
      * @return O objeto Perfil do utilizador logado, ou null se ninguém estiver logado.
      */
-    public Perfil getPerfil() { // Mantido o nome do seu método
+    public Perfil getPerfil() {
         return perfil;
     }
 
