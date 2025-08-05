@@ -8,8 +8,8 @@ public class ConexaoBD {
 
     // URL da base de dados
     private static final String URL = "jdbc:mysql://localhost:3306/gsa_db";
-    private static final String USER = "root";  // Usuário do banco de dados
-    private static final String PASSWORD = "1234ra";  // Senha do banco de dados
+    private static final String USER = "****";  // Usuário do banco de dados
+    private static final String PASSWORD = "****";  // Senha do banco de dados
 
     // Método para obter a conexão com a base de dados
     public static Connection getConnection() {
